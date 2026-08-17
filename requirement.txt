@@ -1,0 +1,55 @@
+# ============================================================
+#  R.S. - Red Shirt AI Assistant
+#  requirements.txt — All libraries RS needs
+# ============================================================
+
+# ── CORE (already had these) ────────────────────────────────
+flask
+flask-cors
+requests
+python-dotenv
+
+# ── VOICE ───────────────────────────────────────────────────
+SpeechRecognition
+pyaudio
+
+# ── MOUSE & KEYBOARD CONTROL ────────────────────────────────
+pyautogui
+pynput
+
+# ── SCREEN VISION ───────────────────────────────────────────
+pillow
+opencv-python
+pytesseract
+
+# ── AUTONOMOUS BROWSER ──────────────────────────────────────
+playwright
+selenium
+webdriver-manager
+
+# ── SYSTEM TRAY (background running) ────────────────────────
+pystray
+Pillow
+
+# ── MEDIA (music & video) ───────────────────────────────────
+python-vlc
+pygame
+yt-dlp
+
+# ── FILE DOWNLOADS ──────────────────────────────────────────
+requests
+tqdm
+
+# ── TUNNELING (mobile access) ───────────────────────────────
+pyngrok
+
+# ── TASK SCHEDULING ─────────────────────────────────────────
+schedule
+
+# ── WHATSAPP / EMAIL / MESSAGING ────────────────────────────
+pywin32
+smtplib2
+
+# ── SYSTEM INFO ─────────────────────────────────────────────
+psutil
+platform
