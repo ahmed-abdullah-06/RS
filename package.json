@@ -1,0 +1,38 @@
+{
+  "name": "rs-ai-assistant",
+  "version": "2.0.0",
+  "description": "RS - Red Shirt AI Assistant",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.mrnote.rs",
+    "productName": "RS Red Shirt",
+    "win": {
+      "target": "nsis",
+      "icon": "app/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "extraResources": [
+      { "from": "dist/rs_server.exe", "to": "rs_server.exe" },
+      { "from": "memory_store",       "to": "memory_store"  },
+      { "from": "logs",               "to": "logs"          }
+    ],
+    "files": [
+      "app/**/*",
+      "main.js",
+      "package.json"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^36.3.1",
+    "electron-builder": "^24.0.0"
+  }
+}
