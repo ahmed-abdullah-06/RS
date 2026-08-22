@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RS — Red Shirt AI Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── CUSTOM TITLE BAR ─────────────────────────────── -->
+<div class="titlebar">
+    <div class="titlebar-left">
+        <div class="titlebar-logo">RS</div>
+        <span class="titlebar-title">R.S. <span class="red">RED SHIRT</span></span>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="switchTab('intelligence')">INTELLIGENCE</button>
+        <div class="tab-divider"></div>
+        <button class="tab" onclick="switchTab('memory')">MEMORY</button>
+        <div class="tab-divider"></div>
+        <button class="tab" onclick="switchTab('tasks')">TASKS</button>
+        <div class="tab-divider"></div>
+        <button class="tab" onclick="switchTab('evolution')">EVOLUTION</button>
+        <div class="tab-divider"></div>
+        <button class="tab" onclick="switchTab('settings')">SETTINGS</button>
+    </div>
+
+    <div class="titlebar-right">
+        <span class="rs-brand">R.S. <span class="red">(RED SHIRT)</span></span>
+        <div class="window-controls">
+            <button onclick="minimizeWindow()">─</button>
+            <button onclick="maximizeWindow()">□</button>
+            <button class="close-btn" onclick="closeWindow()">✕</button>
+        </div>
+    </div>
+</div>
+
+<!-- ── MAIN CONTENT ─────────────────────────────────── -->
+<div class="main">
+
+    <!-- INTELLIGENCE TAB -->
+    <div id="tab-intelligence" class="tab-content active">
+        <div class="intelligence-layout">
+
+            <!-- Left — Chat Panel -->
+            <div class="chat-panel glass">
+                <div class="panel-header">
+                    <span class="panel-icon">◈</span>
+                    <span>NEURAL FEED</span>
+                    <span class="online-dot">●</span>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages injected here -->
+                </div>
+            </div>
+
+            <!-- Center — Neural Core Visualization -->
+            <div class="neural-center">
+                <canvas id="neuralCanvas"></canvas>
+                <!-- Floating info cards -->
+                <div class="float-card top-left" id="floatNeural">
+                    <div class="float-label">Neural</div>
+                    <div class="float-bars">
+                        <div class="fbar"><div class="fbar-fill" style="width:87%"></div></div>
+                        <div class="fbar"><div class="fbar-fill" style="width:65%"></div></div>
+                        <div class="fbar"><div class="fbar-fill" style="width:45%"></div></div>
+                    </div>
+                </div>
+                <div class="float-card top-right" id="floatActivity">
+                    <div class="float-label">Neural Activity</div>
+                    <div class="float-value" id="neuralActivity">87.8%</div>
+                    <div class="float-sub">9 Active</div>
+                </div>
+                <div class="float-card bottom-left" id="floatMemory">
+                    <div class="float-label">Resonato</div>
+                    <div class="float-bars">
+                        <div class="fbar"><div class="fbar-fill" style="width:70%"></div></div>
+                        <div class="fbar"><div class="fbar-fill" style="width:50%"></div></div>
+                    </div>
+                    <div class="float-sub">00</div>
+                </div>
+                <div class="float-card bottom-right" id="floatFeedback">
+                    <div class="float-label">Kibee</div>
+                    <div class="float-bars">
+                        <div class="fbar"><div class="fbar-fill" style="width:90%"></div></div>
+                        <div class="fbar"><div class="fbar-fill" style="width:60%"></div></div>
+                    </div>
+                    <div class="float-sub">Rotselcon &nbsp; Store</div>
+                </div>
+            </div>
+
+            <!-- Right — Stats Panel -->
+            <div class="stats-panel glass">
+                <button class="close-stats">✕</button>
+                <div class="stat-item">
+                    <div class="stat-label">Memory:</div>
+                    <div class="stat-value" id="statMemory">0 Active</div>
+                    <div class="stat-bar"><div class="stat-bar-fill" id="memBar" style="width:10%"></div></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Neural Activity:</div>
+                    <div class="stat-value red">High (94.2%)</div>
+                    <div class="stat-bar"><div class="stat-bar-fill" style="width:94%"></div></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Evolution Progress:</div>
+                    <div class="stat-value red" id="statEvolution">87.6% (Level 1)</div>
+                    <div class="stat-bar"><div class="stat-bar-fill" id="evoBar" style="width:87%"></div></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Feedback Score:</div>
+                    <div class="stat-value red" id="statFeedback">99.1%</div>
+                    <div class="stat-bar"><div class="stat-bar-fill" id="fbBar" style="width:99%"></div></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Active Processes:</div>
+                    <div class="stat-value" id="statProcesses">34 Active</div>
+                    <div class="stat-bar"><div class="stat-bar-fill" style="width:60%"></div></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MEMORY TAB -->
+    <div id="tab-memory" class="tab-content">
+        <div class="simple-tab">
+            <div class="simple-header">
+                <span class="red">◈ MEMORY BANK</span>
+                <button class="red-btn" onclick="loadMemories()">Refresh</button>
+            </div>
+            <div class="memory-list" id="memoryList">
+                <div class="loading">Loading memories...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TASKS TAB -->
+    <div id="tab-tasks" class="tab-content">
+        <div class="simple-tab">
+            <div class="simple-header">
+                <span class="red">◈ TASK MANAGER</span>
+                <button class="red-btn" onclick="showAddTask()">+ Add Task</button>
+            </div>
+            <div class="task-list" id="taskList">
+                <div class="loading">No tasks yet.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVOLUTION TAB -->
+    <div id="tab-evolution" class="tab-content">
+        <div class="simple-tab">
+            <div class="simple-header">
+                <span class="red">◈ EVOLUTION ENGINE</span>
+            </div>
+            <div class="evo-grid">
+                <div class="evo-card glass">
+                    <div class="evo-title">Version</div>
+                    <div class="evo-big red" id="evoVersion">1.0.0</div>
+                </div>
+                <div class="evo-card glass">
+                    <div class="evo-title">Memories Stored</div>
+                    <div class="evo-big red" id="evoMemories">0</div>
+                </div>
+                <div class="evo-card glass">
+                    <div class="evo-title">Feedback Score</div>
+                    <div class="evo-big red" id="evoFeedback">10.0</div>
+                </div>
+                <div class="evo-card glass">
+                    <div class="evo-title">Storage Used</div>
+                    <div class="evo-big red" id="evoStorage">0%</div>
+                </div>
+            </div>
+            <div class="patterns-section glass">
+                <div class="evo-title red">TOP PATTERNS</div>
+                <div id="evoPatterns" class="patterns-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SETTINGS TAB -->
+    <div id="tab-settings" class="tab-content">
+        <div class="simple-tab">
+            <div class="simple-header">
+                <span class="red">◈ SETTINGS</span>
+            </div>
+            <div class="settings-list" id="settingsList">
+                <div class="setting-row glass">
+                    <span class="setting-key">Assistant Name</span>
+                    <span class="setting-val red">RS (Red Shirt)</span>
+                </div>
+                <div class="setting-row glass">
+                    <span class="setting-key">AI Model</span>
+                    <span class="setting-val">openai/gpt-oss-120b:free</span>
+                </div>
+                <div class="setting-row glass">
+                    <span class="setting-key">Memory</span>
+                    <span class="setting-val red">Enabled</span>
+                </div>
+                <div class="setting-row glass">
+                    <span class="setting-key">Voice</span>
+                    <span class="setting-val red">Enabled</span>
+                </div>
+                <div class="setting-row glass">
+                    <span class="setting-key">Version</span>
+                    <span class="setting-val" id="settingVersion">2.0.0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ── INPUT BAR ─────────────────────────────────────── -->
+<div class="inputbar">
+    <input type="text" id="commandInput"
+           placeholder="Command input..."
+           onkeydown="handleKey(event)"/>
+    <button class="mic-btn" id="micBtn" onclick="toggleVoice()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>
+        </svg>
+    </button>
+    <div class="waveform" id="waveform">
+        <div class="wave-bars" id="waveBars"></div>
+    </div>
+    <div class="sparkle">✦</div>
+</div>
+
+<!-- ── ADD TASK DIALOG ───────────────────────────────── -->
+<div class="dialog-overlay" id="taskDialog" style="display:none">
+    <div class="dialog glass">
+        <div class="dialog-title red">Add New Task</div>
+        <input type="text" id="taskInput"
+               placeholder="Enter task description..."
+               class="dialog-input"/>
+        <div class="dialog-btns">
+            <button class="red-btn" onclick="addTask()">Add Task</button>
+            <button class="gray-btn" onclick="hideAddTask()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- ── FEEDBACK DIALOG ──────────────────────────────── -->
+<div class="dialog-overlay" id="feedbackDialog" style="display:none">
+    <div class="dialog glass">
+        <div class="dialog-title">Rate this response</div>
+        <div class="feedback-btns">
+            <button class="fb-btn good" onclick="submitFeedback('good')">✅ Good</button>
+            <button class="fb-btn ok"   onclick="submitFeedback('ok')">🔄 OK</button>
+            <button class="fb-btn bad"  onclick="submitFeedback('bad')">❌ Bad</button>
+        </div>
+    </div>
+</div>
+
+<script src="renderer.js"></script>
+</body>
+</html>
