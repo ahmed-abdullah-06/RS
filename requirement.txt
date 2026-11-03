@@ -1,0 +1,55 @@
+# ============================================================
+#  R.S. - Red Shirt AI Agent v3.0
+#  requirement.txt — All libraries RS needs
+#
+#  Verified against the actual imports in this codebase —
+#  every package here is really used by a module.
+#
+#  Install:  pip install -r requirement.txt
+#            playwright install chromium
+# ============================================================
+
+# ── CORE (server + local-first engine router) ────────────────
+flask
+flask-cors
+requests
+python-dotenv
+
+# ── VOICE (TTS uses Windows PowerShell, STT uses Google) ─────
+# pyaudio = microphone capture for "Hey RS" wake word + STT
+SpeechRecognition
+pyaudio
+
+# ── MOUSE & KEYBOARD CONTROL ─────────────────────────────────
+pyautogui
+pynput
+
+# ── SCREEN VISION (screenshots + image matching) ─────────────
+pillow
+
+# ── AUTONOMOUS BROWSER ───────────────────────────────────────
+playwright
+
+# ── SYSTEM TRAY (background running) ─────────────────────────
+pystray
+
+# ── MEDIA (music & video) ────────────────────────────────────
+pygame
+yt-dlp
+# NOTE: yt-dlp needs FFmpeg on PATH to convert audio to MP3.
+#       winget install Gyan.FFmpeg
+
+# ── TUNNELING (mobile access) ────────────────────────────────
+pyngrok
+
+# ── TASK SCHEDULING ──────────────────────────────────────────
+schedule
+
+# ── JARVIS HUD desktop shell (pywebview window) ──────────────
+pywebview
+
+# ── SYSTEM INFO (telemetry, monitor agent, doctor) ───────────
+psutil
+
+# ── RESEARCH / DIGEST (news + page scraping) ─────────────────
+beautifulsoup4
