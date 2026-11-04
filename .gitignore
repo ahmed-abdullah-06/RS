@@ -1,0 +1,62 @@
+# ============================================================
+#  R.S. - Red Shirt AI Assistant
+#  .gitignore — Tailored for this exact project
+# ============================================================
+
+# ── SECRETS ─────────────────────────────────────────────────
+.env
+*.env
+
+# ── PYTHON CACHE ────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+
+# ── NODE & ELECTRON ─────────────────────────────────────────
+node_modules/
+package-lock.json
+npm-debug.log*
+out/
+dist/
+*.exe
+*.dmg
+
+# ── RS MEMORY (personal conversations & data) ────────────────
+memory_store/
+
+# ── RS LOGS ─────────────────────────────────────────────────
+logs/
+
+# ── RS DOWNLOADS ────────────────────────────────────────────
+downloads/
+
+# ── SCREENSHOTS ─────────────────────────────────────────────
+screenshots/
+
+# ── BROWSER DATA (Playwright sessions, cookies, cache) ───────
+browser_data/
+
+# ── COMPILED PYTHON SERVER ──────────────────────────────────
+rs_server/
+rs_server.exe
+build/
+*.spec
+*.dist/
+
+# ── VIRTUAL ENVIRONMENT ─────────────────────────────────────
+venv/
+env/
+.venv/
+
+# ── OS FILES ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ─────────────────────────────────────────────────────
+.vscode/
+.idea/
+
+# ── OLD GUI FILES (not in use) ──────────────────────────────
+# gui2.py
